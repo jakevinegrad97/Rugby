@@ -40,5 +40,38 @@ public class Fixture {
 	public String beforeMatch() {
 		return homeTeam.getName() + " vs. " + awayTeam.getName();	
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((awayTeam == null) ? 0 : awayTeam.hashCode());
+		result = prime * result + ((homeTeam == null) ? 0 : homeTeam.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Fixture other = (Fixture) obj;
+		if (awayTeam == null) {
+			if (other.awayTeam != null)
+				return false;
+		} else if (!awayTeam.equals(other.awayTeam))
+			return false;
+		if (homeTeam == null) {
+			if (other.homeTeam != null)
+				return false;
+		} else if (!homeTeam.equals(other.homeTeam))
+			return false;
+		return true;
+	}
+	
+	
 	
 }
