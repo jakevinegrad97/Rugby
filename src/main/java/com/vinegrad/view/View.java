@@ -1,20 +1,18 @@
 package com.vinegrad.view;
 
-import com.vinegrad.model.Fixture;
+import java.util.List;
+
+import com.vinegrad.model.League;
 import com.vinegrad.model.Team;
+import com.vinegrad.reader.Reader;
+import com.vinegrad.reader.TeamReader;
 
 public class View {
 
 	public static void main(String[] args) {
-		Team hull = new Team("Hull FC", 80, 60);
-		Team rovers = new Team("Hull KR", 75, 65);
-		System.out.println(hull);
-		System.out.println(rovers);
-		
-		Fixture hullDerby = new Fixture(hull, rovers);
-		System.out.println(hullDerby.beforeMatch());
-		hullDerby.addResult(36, 6);
-		System.out.println(hullDerby);
+		Reader teamReader = new TeamReader();
+		List<Team> superLeague = teamReader.getTeams(League.SUPER_LEAGUE);
+		superLeague.forEach(System.out::println);
 	}
 
 }
