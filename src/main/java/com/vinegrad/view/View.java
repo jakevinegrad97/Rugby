@@ -10,8 +10,11 @@ import com.vinegrad.fixtures.Simulator;
 import com.vinegrad.model.Fixture;
 import com.vinegrad.model.League;
 import com.vinegrad.model.Team;
-import com.vinegrad.reader.Reader;
-import com.vinegrad.reader.TeamReader;
+import com.vinegrad.updates.Reader;
+import com.vinegrad.updates.TableWriter;
+import com.vinegrad.updates.TeamReader;
+import com.vinegrad.updates.TeamWriter;
+import com.vinegrad.updates.Writer;
 
 public class View {
 
@@ -22,13 +25,21 @@ public class View {
 		List<Fixture> fixtures = fixtureGenerator.generateFixtures(superLeague);
 		Simulator simulator = new LeagueFixtureSimulator();
 		Scanner scanner = new Scanner(System.in);
+		Writer teamWriter = new TeamWriter();
+		Writer tableWriter = new TableWriter();
+		
+		
 		for(int round = 1; round < 2 * (superLeague.size() - 1); round++) {
 			System.out.println("\nSimulate round " + round + "\n");
 			String a = scanner.nextLine();
 			List<Team> teams = simulator.simulateFixtures(fixtures, round);
+			teamWriter.writeTeams(teams);
+			tableWriter.writeTeams(teams);
 			System.out.println();
-			teams.forEach(team -> System.out.println(team.tableFormat()));
+			teams.forEach(team -> System.out.println(team.getName() + " : " + team.getAttack() + " : " + team.getDefence()));
 		}
+		
+		scanner.close();
 	}
 
 }

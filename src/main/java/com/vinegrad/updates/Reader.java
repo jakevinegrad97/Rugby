@@ -1,4 +1,4 @@
-package com.vinegrad.reader;
+package com.vinegrad.updates;
 
 import java.util.List;
 

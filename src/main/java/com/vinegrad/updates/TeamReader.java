@@ -1,4 +1,4 @@
-package com.vinegrad.reader;
+package com.vinegrad.updates;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,9 +21,9 @@ public class TeamReader implements Reader {
 				Files.lines(Paths.get("src/main/resources/teams/" + league.getInitials() + ".txt")).map(line -> {
 					String[] components = line.split(":");
 					String name = components[0].trim();
-					int attack = Integer.valueOf(components[1].trim());
-					int defence = Integer.valueOf(components[2].trim());
-					return new Team(name, attack, defence);
+					double attack = Double.valueOf(components[1].trim());
+					double defence = Double.valueOf(components[2].trim());
+					return new Team(name, attack, defence, league);
 				})
 				.collect(Collectors.toList());
 		} catch (IOException e) {

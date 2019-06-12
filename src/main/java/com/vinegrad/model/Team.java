@@ -3,13 +3,15 @@ package com.vinegrad.model;
 public class Team {
 
 	private String name;
-	private int played, won, drawn, lost, scored, conceded, pointsDifference, points;
+	private int played, won, drawn, lost, scored, conceded, pointsDifference, points, place;
 	private double attack, defence;
+	private League league;
 
-	public Team(String name, double attack, double defence) {
+	public Team(String name, double attack, double defence, League league) {
 		this.name = name;
 		this.attack = attack;
 		this.defence = defence;
+		this.league = league;
 		played = 0;
 		won = 0;
 		drawn = 0;
@@ -18,6 +20,19 @@ public class Team {
 		conceded = 0;
 		pointsDifference = scored = conceded;
 		points = 2 * won + drawn;
+		place = 0;
+	}
+	
+	public int getPlace() {
+		return place;
+	}
+	
+	public void setPlace(int place) {
+		this.place = place;
+	}
+	
+	public League getLeague() {
+		return league;
 	}
 
 	public String getName() {
@@ -65,7 +80,7 @@ public class Team {
 	}
 
 	public String toString() {
-		return name + " : " + (int) attack + " : " + (int) defence;
+		return name + " : " + (int) Math.round(attack) + " : " + (int) Math.round(defence);
 	}
 
 	public String tableFormat() {
@@ -103,16 +118,24 @@ public class Team {
 	}
 
 	public void addResult(int pointsScored, int pointsConceded) {
+		double weight = Math.random() * 0.2;
 		played++;
 		scored += pointsScored;
 		conceded += pointsConceded;
 		pointsDifference = pointsDifference + pointsScored - pointsConceded;
+		defence += pointsConceded < 18 ? 3 * Math.random() * (18 - pointsConceded) / 100 : - 3 * Math.random() * (pointsConceded - 18) / 100;
+		attack += pointsScored >= 18 ? 3 * Math.random() * (pointsScored - 18) / 100 : -3 * Math.random() * (18 - pointsScored) / 100;
 		if(pointsScored > pointsConceded) {
 			won++;
 			points += 2;
+			attack += weight;
+			defence += weight;
 		}
-		else if (pointsScored < pointsConceded)
+		else if (pointsScored < pointsConceded) {
 			lost++;
+			attack -= weight;
+			defence -= weight;
+		}
 		else {
 			drawn++;
 			points++;
