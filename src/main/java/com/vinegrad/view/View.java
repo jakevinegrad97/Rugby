@@ -1,6 +1,8 @@
 package com.vinegrad.view;
 
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import com.vinegrad.generator.FixtureGenerator;
 import com.vinegrad.generator.Generator;
@@ -17,7 +19,12 @@ public class View {
 		List<Team> superLeague = teamReader.getTeams(League.SUPER_LEAGUE);
 		Generator fixtureGenerator = new FixtureGenerator();
 		List<Fixture> fixtures = fixtureGenerator.generateFixtures(superLeague);
-		System.out.println(fixtures.size());
+		for(int i = 1; i <= 22; i++) {
+			System.out.println("Round " + i + ":");
+			int round = i;
+			fixtures.stream().filter(fixture -> fixture.getRound() == round)
+					.forEach(fixture -> System.out.println(fixture.beforeMatch()));;
+		}
 	}
 
 }

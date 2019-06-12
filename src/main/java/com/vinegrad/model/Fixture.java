@@ -40,6 +40,12 @@ public class Fixture {
 	public String beforeMatch() {
 		return homeTeam.getName() + " vs. " + awayTeam.getName();	
 	}
+	
+	public void reverse() {
+		Team temp = homeTeam;
+		homeTeam = awayTeam;
+		awayTeam = temp;
+	}
 
 	@Override
 	public int hashCode() {

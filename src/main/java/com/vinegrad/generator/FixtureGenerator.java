@@ -1,6 +1,8 @@
 package com.vinegrad.generator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,35 +22,43 @@ public class FixtureGenerator implements Generator {
 
 	@Override
 	public List<Fixture> generateFixtures(List<Team> teams) {
-		List<Fixture> fixtures = getFixturesWithoutRounds(teams);
 		List<Fixture> result = new ArrayList<>();
-		Map<Integer, List<Team>> teamsByRound = new HashMap<>();
-		for(int i = 0; i < 2 * (teams.size() - 1); i++) {
-			teamsByRound.put(i, new ArrayList<>());
-		}
-		List<Integer> rounds = new ArrayList<>();
-		for (Fixture fixture : fixtures) {
-			for (int round = 0; round < 2 * (teams.size() - 1); round++) {
-				rounds.add(round);
-			}
-			final Team homeTeam = fixture.getHomeTeam();
-			final Team awayTeam = fixture.getAwayTeam();
-			int round = 0;
-			boolean isValidFixture = false;
-			while (isValidFixture) {
-				round = rounds.get((int) floor(rounds.size() * random()));
-				if (!(teamsByRound.get(round).contains(homeTeam) || teamsByRound.get(round).contains(awayTeam))) {
-					isValidFixture = true;
+		for(int round = 1; round <= 2 * (teams.size() - 1); round++) {
+			List<Fixture> possibleFixtures = getFixturesWithoutRounds(teams);
+			List<Fixture> thisRound = new ArrayList<>();
+			possibleFixtures.removeAll(result);
+			while(thisRound.size() < teams.size() / 2) {
+				Fixture fixture = possibleFixtures.get((int) floor(possibleFixtures.size() * random()));
+				if(isValidFixture(fixture, thisRound)) {
+					possibleFixtures.remove(fixture);
+					fixture.setRound(round);
+					thisRound.add(fixture);
 				} else {
-					rounds.remove(rounds.indexOf(round));
+					possibleFixtures.remove(fixture);
+				}
+				if(possibleFixtures.size() == 0) {
+					possibleFixtures = getFixturesWithoutRounds(teams);
+					thisRound = new ArrayList<>();
 				}
 			}
-			teamsByRound.get(round).add(homeTeam);
-			teamsByRound.get(round).add(awayTeam);
-			fixture.setRound(round);
-			result.add(fixture);
+			result.addAll(thisRound);
+			
 		}
 		return result;
+	}
+
+	private boolean isValidFixture(Fixture fixture, List<Fixture> thisRound) {
+		List<Team> teams = thisRound.stream()
+			.map(f -> f.getHomeTeam())
+			.collect(Collectors.toList());
+		List<Team> aways = thisRound.stream()
+				.map(f -> f.getAwayTeam())
+				.collect(Collectors.toList());
+		teams.addAll(aways);
+		if(teams.contains(fixture.getHomeTeam()) || teams.contains(fixture.getAwayTeam()))
+			return false;
+		else
+			return true;
 	}
 
 	private List<Fixture> getFixturesWithoutRounds(List<Team> teams) {

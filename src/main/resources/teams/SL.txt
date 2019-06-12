@@ -1,9 +1,9 @@
 Castleford Tigers : 75 : 70
 Catalan Dragons : 80 : 70
-Leeds Rhinos : 70 : 70
 Huddersfield Giants : 65 : 65
 Hull FC : 80 : 65
 Hull KR : 65 : 60
+Leeds Rhinos : 70 : 70
 London Broncos : 55 : 60
 Salford Red Devils : 65 : 75
 St Helens : 90 : 85
