@@ -101,6 +101,23 @@ public class Team {
 			return false;
 		return true;
 	}
+
+	public void addResult(int pointsScored, int pointsConceded) {
+		played++;
+		scored += pointsScored;
+		conceded += pointsConceded;
+		pointsDifference = pointsDifference + pointsScored - pointsConceded;
+		if(pointsScored > pointsConceded) {
+			won++;
+			points += 2;
+		}
+		else if (pointsScored < pointsConceded)
+			lost++;
+		else {
+			drawn++;
+			points++;
+		}	
+	}
 	
 	
 

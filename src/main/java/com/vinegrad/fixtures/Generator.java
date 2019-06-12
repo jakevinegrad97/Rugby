@@ -1,4 +1,4 @@
-package com.vinegrad.generator;
+package com.vinegrad.fixtures;
 
 import java.util.List;
 

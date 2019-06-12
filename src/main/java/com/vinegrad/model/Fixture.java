@@ -15,6 +15,8 @@ public class Fixture {
 	}
 	
 	public void addResult(int homeScore, int awayScore) {
+		homeTeam.addResult(homeScore, awayScore);
+		awayTeam.addResult(awayScore, homeScore);
 		this.homeScore = homeScore;
 		this.awayScore = awayScore;
 	}

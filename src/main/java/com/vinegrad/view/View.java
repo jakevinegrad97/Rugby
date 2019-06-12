@@ -1,11 +1,12 @@
 package com.vinegrad.view;
 
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
+import java.util.Scanner;
 
-import com.vinegrad.generator.FixtureGenerator;
-import com.vinegrad.generator.Generator;
+import com.vinegrad.fixtures.FixtureGenerator;
+import com.vinegrad.fixtures.Generator;
+import com.vinegrad.fixtures.LeagueFixtureSimulator;
+import com.vinegrad.fixtures.Simulator;
 import com.vinegrad.model.Fixture;
 import com.vinegrad.model.League;
 import com.vinegrad.model.Team;
@@ -19,11 +20,14 @@ public class View {
 		List<Team> superLeague = teamReader.getTeams(League.SUPER_LEAGUE);
 		Generator fixtureGenerator = new FixtureGenerator();
 		List<Fixture> fixtures = fixtureGenerator.generateFixtures(superLeague);
-		for(int i = 1; i <= 22; i++) {
-			System.out.println("Round " + i + ":");
-			int round = i;
-			fixtures.stream().filter(fixture -> fixture.getRound() == round)
-					.forEach(fixture -> System.out.println(fixture.beforeMatch()));;
+		Simulator simulator = new LeagueFixtureSimulator();
+		Scanner scanner = new Scanner(System.in);
+		for(int round = 1; round < 2 * (superLeague.size() - 1); round++) {
+			System.out.println("\nSimulate round " + round + "\n");
+			String a = scanner.nextLine();
+			List<Team> teams = simulator.simulateFixtures(fixtures, round);
+			System.out.println();
+			teams.forEach(team -> System.out.println(team.tableFormat()));
 		}
 	}
 
