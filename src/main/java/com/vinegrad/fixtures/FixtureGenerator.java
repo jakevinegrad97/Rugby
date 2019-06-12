@@ -23,7 +23,9 @@ public class FixtureGenerator implements Generator {
 	@Override
 	public List<Fixture> generateFixtures(List<Team> teams) {
 		List<Fixture> result = new ArrayList<>();
-		for(int round = 1; round <= 2 * (teams.size() - 1); round++) {
+		for(int round = 1; round <= 30; round++) {
+			if(round == 12)
+				round = 13;
 			List<Fixture> possibleFixtures = getFixturesWithoutRounds(teams);
 			List<Fixture> thisRound = new ArrayList<>();
 			possibleFixtures.removeAll(result);
@@ -42,8 +44,20 @@ public class FixtureGenerator implements Generator {
 				}
 			}
 			result.addAll(thisRound);
-			
 		}
+		List<Fixture> magicWeekend = new ArrayList<>();
+		List<Fixture> possibleFixtures = getFixturesWithoutRounds(teams);
+		while(magicWeekend.size() < teams.size() / 2) {
+			Fixture fixture = possibleFixtures.get((int) floor(possibleFixtures.size() * random()));
+			while(!isValidFixture(fixture, magicWeekend)) {
+				possibleFixtures.remove(fixture);
+				fixture = possibleFixtures.get((int) floor(possibleFixtures.size() * random()));
+			}
+			possibleFixtures.remove(fixture);
+			fixture.setRound(12);
+			magicWeekend.add(fixture);
+		}
+		result.addAll(magicWeekend);
 		return result;
 	}
 

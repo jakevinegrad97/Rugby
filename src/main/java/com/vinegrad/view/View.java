@@ -29,14 +29,12 @@ public class View {
 		Writer tableWriter = new TableWriter();
 		
 		
-		for(int round = 1; round < 2 * (superLeague.size() - 1); round++) {
+		for(int round = 1; round <= 30; round++) {
 			System.out.println("\nSimulate round " + round + "\n");
 			String a = scanner.nextLine();
 			List<Team> teams = simulator.simulateFixtures(fixtures, round);
 			teamWriter.writeTeams(teams);
 			tableWriter.writeTeams(teams);
-			System.out.println();
-			teams.forEach(team -> System.out.println(team.getName() + " : " + team.getAttack() + " : " + team.getDefence()));
 		}
 		
 		scanner.close();

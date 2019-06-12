@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.log4j.Logger;
+
 import com.vinegrad.model.Fixture;
 import com.vinegrad.model.Team;
 import static java.lang.Math.*;
 
 public class LeagueFixtureSimulator implements Simulator {
 
+	public static final Logger LOGGER = Logger.getLogger(LeagueFixtureSimulator.class);
+	
 	@Override
 	public List<Team> simulateFixtures(List<Fixture> fixtures, int round) {
 		List<Team> result = new ArrayList<>();
@@ -25,9 +29,19 @@ public class LeagueFixtureSimulator implements Simulator {
 	private void determineVictor(Fixture fixture) {
 		final Team homeTeam = fixture.getHomeTeam();
 		final Team awayTeam = fixture.getAwayTeam();
-		double homeChance = (homeTeam.getAttack() + (100 - awayTeam.getDefence())) / 2 + 100 * random();
-		double awayChance = 0.9 * ((awayTeam.getAttack() + (100 - homeTeam.getDefence())) / 2 + 100 * random());
+		
+		double homeChance = ((homeTeam.getAttack() + (100 - awayTeam.getDefence())) / 2
+				+ 3 * homeTeam.getForm() + (30 - awayTeam.getForm())
+				+ (31 - homeTeam.getPlace()) + awayTeam.getPlace()
+				+ 100 * random()) / 2;
+				
+		double awayChance = 0.9 * ((awayTeam.getAttack() + (100 - homeTeam.getDefence())) / 2
+				+ 3 * awayTeam.getForm() + (30 - homeTeam.getForm())
+				+ (31 - awayTeam.getPlace()) + homeTeam.getPlace()
+				+ 100 * random()) / 2;
 
+		LOGGER.info("Home: " + homeChance + " Away: " + awayChance);
+		
 		int homeTries = getTries(homeChance);
 		int awayTries = getTries(awayChance);
 
@@ -66,9 +80,9 @@ public class LeagueFixtureSimulator implements Simulator {
 
 	private int getTries(double weight) {
 		int result = (int) floor(random() * 2);
-		if (weight > 20)
-			result += (int) floor(random() * 2);
 		if (weight > 50)
+			result += (int) floor(random() * 2);
+		if(weight > 65)
 			result += (int) floor(random() * 2);
 		if (weight > 75)
 			result += (int) floor(random() * 3);

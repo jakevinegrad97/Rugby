@@ -1,13 +1,18 @@
 package com.vinegrad.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Team {
 
 	private String name;
 	private int played, won, drawn, lost, scored, conceded, pointsDifference, points, place;
 	private double attack, defence;
 	private League league;
+	private List<Integer> form;
 
 	public Team(String name, double attack, double defence, League league) {
+		this.form = new ArrayList<>();
 		this.name = name;
 		this.attack = attack;
 		this.defence = defence;
@@ -21,6 +26,10 @@ public class Team {
 		pointsDifference = scored = conceded;
 		points = 2 * won + drawn;
 		place = 0;
+	}
+	
+	public int getForm() {
+		return form.stream().mapToInt(i -> i).sum();
 	}
 	
 	public int getPlace() {
@@ -88,7 +97,7 @@ public class Team {
 		for (int i = 0; i < 32 - name.length(); i++) {
 			tab += " ";
 		}
-		return name + " : " + tab + played + "   " + won + "   " + drawn + "   " + lost + "   " + scored + "   "
+		return place + ". " + name + "  " + tab + played + "   " + won + "   " + drawn + "   " + lost + "   " + scored + "   "
 				+ conceded + "   " + pointsDifference + "   " + points + "\n";
 	}
 
@@ -123,23 +132,42 @@ public class Team {
 		scored += pointsScored;
 		conceded += pointsConceded;
 		pointsDifference = pointsDifference + pointsScored - pointsConceded;
-		defence += pointsConceded < 18 ? 3 * Math.random() * (18 - pointsConceded) / 100 : - 3 * Math.random() * (pointsConceded - 18) / 100;
+		defence += pointsConceded <= 24 ? 3 * Math.random() * (24 - pointsConceded) / 100 : - 3 * Math.random() * (pointsConceded - 24) / 100;
 		attack += pointsScored >= 18 ? 3 * Math.random() * (pointsScored - 18) / 100 : -3 * Math.random() * (18 - pointsScored) / 100;
+		int pointsForResult = 0;
 		if(pointsScored > pointsConceded) {
 			won++;
-			points += 2;
+			pointsForResult = 2;
 			attack += weight;
 			defence += weight;
 		}
 		else if (pointsScored < pointsConceded) {
 			lost++;
+			pointsForResult = 0;
 			attack -= weight;
 			defence -= weight;
 		}
 		else {
 			drawn++;
-			points++;
-		}	
+			pointsForResult = 1;
+		}
+		points += pointsForResult;
+		
+		if(form.size() < 5)
+			form.add(pointsForResult);
+		else {
+			form.remove(0);
+			form.add(pointsForResult);
+		}
+		
+		if(attack > 100)
+			attack = 100;
+		if(defence > 100)
+			defence = 100;
+		if(attack < 55)
+			attack = 55;
+		if(defence < 55)
+			defence = 55;
 	}
 	
 	
