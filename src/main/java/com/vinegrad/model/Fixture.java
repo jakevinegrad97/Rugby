@@ -14,6 +14,14 @@ public class Fixture {
 		this.awayTeam = awayTeam;
 	}
 	
+	public Fixture(Team homeTeam, Team awayTeam, int round) {
+		homeScore = 0;
+		awayScore = 0;
+		this.homeTeam = homeTeam;
+		this.awayTeam = awayTeam;
+		this.round = round;
+	}
+	
 	public void addResult(int homeScore, int awayScore) {
 		homeTeam.addResult(homeScore, awayScore);
 		awayTeam.addResult(awayScore, homeScore);

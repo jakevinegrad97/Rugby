@@ -68,13 +68,16 @@ public class LeagueFixtureSimulator implements Simulator {
 		
 		if(homeScore == awayScore) {
 			int sum = (int) (homeTeam.getAttack() + awayTeam.getAttack());
-			double random = random();
-			if(random <= homeTeam.getAttack())
+			double random = sum * random();
+			if(random <= homeTeam.getAttack() && random > 10)
 				homeScore++;
-			else if(random > homeTeam.getAttack() && random <= sum)
+			else if(random > homeTeam.getAttack() && random < sum - 10)
 				awayScore++;
 		}
 		fixture.addResult(homeScore, awayScore);
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {}
 		System.out.println(fixture);
 	}
 
@@ -87,9 +90,9 @@ public class LeagueFixtureSimulator implements Simulator {
 		if (weight > 75)
 			result += (int) floor(random() * 3);
 		if (weight > 85)
-			result += (int) floor(random() * 3);
+			result += (int) floor(1 + random() * 3);
 		if (weight > 95)
-			result += (int) floor(random() * 4);
+			result += (int) floor(2 + random() * 3);
 		return result;
 	}
 
