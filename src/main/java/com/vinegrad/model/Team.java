@@ -1,7 +1,6 @@
 package com.vinegrad.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -180,14 +179,47 @@ public class Team {
 		if(played >= 8)
 			checkTerribleForm();
 		
-		if(attack > 100)
-			attack = 100;
-		if(defence > 100)
-			defence = 100;
-		if(attack < 55)
-			attack = 55;
-		if(defence < 55)
-			defence = 55;
+		attack = check(attack);
+		defence = check(defence);
+		
+	}
+	
+	public void promote() {
+		switch(league) {
+		case SUPER_LEAGUE :
+			break;
+		case CHAMPIONSHIP :
+			league = League.SUPER_LEAGUE;
+			break;
+		}
+	}
+	
+	public void relegate() {
+		switch(league) {
+		case SUPER_LEAGUE :
+			league = League.CHAMPIONSHIP;
+			break;
+		case CHAMPIONSHIP :
+			break;
+		}
+	}
+	
+	private double check(double input) {
+		switch(league) {
+		case SUPER_LEAGUE :
+			if(input > 100)
+				input = 100;
+			if(input < 60)
+				input = 60;
+			break;
+		case CHAMPIONSHIP :
+			if(input > 70)
+				input = 70;
+			if(input < 40)
+				input = 40;
+			break;
+		}
+		return input;
 	}
 	
 	public static final Logger LOGGER = Logger.getLogger(Team.class);

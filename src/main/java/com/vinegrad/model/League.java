@@ -2,7 +2,7 @@ package com.vinegrad.model;
 
 public enum League {
 	
-	SUPER_LEAGUE("Super League", "SL", 1);
+	SUPER_LEAGUE("Super League", "SL", 1), CHAMPIONSHIP("Championship", "CH", 2);
 	
 	String displayName, initials;
 	int tier;

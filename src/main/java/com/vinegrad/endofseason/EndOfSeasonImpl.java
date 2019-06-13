@@ -7,17 +7,27 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import com.vinegrad.model.Fixture;
+import com.vinegrad.model.League;
 import com.vinegrad.model.Team;
 
-public class SLEndOfSeason extends EndOfSeason {
+public class EndOfSeasonImpl extends EndOfSeason {
 	
 	private Scanner scanner;
 
 	public void simulate(List<Team> teams) {
+		final League league = teams.get(0).getLeague();
 		List<Team> top5 = teams.stream()
 			.filter(team -> team.getPlace() <= 5)
 			.sorted(Comparator.comparing(Team::getPlace))
 			.collect(Collectors.toList());
+		
+		print(league.getDisplayName() + " End of Season!");
+		Team bottom = teams.stream()
+				.filter(team -> team.getPlace() == teams.size())
+				.findFirst()
+				.get();
+		print(bottom.getName() + " are relegated!");
+		bottom.relegate();
 		
 		final Team first = top5.get(0);
 		final Team second = top5.get(1);
@@ -63,9 +73,16 @@ public class SLEndOfSeason extends EndOfSeason {
 		print("Grand Final! " + grandFinal.beforeMatch());
 		Team winnerSuperLeague = determineWinner(grandFinal);
 		
-		print(winnerSuperLeague.getName() + " win Super League!");
+		switch(league) {
+		case SUPER_LEAGUE :
+			print(winnerSuperLeague.getName() + " win Super League!");
+			break;
+		case CHAMPIONSHIP :
+			print(winnerSuperLeague.getName() + " are promoted!");
+			winnerSuperLeague.promote();
+			break;
+		}
 		
-		scanner.close();
 	}
 
 	

@@ -16,6 +16,7 @@ public class LeagueFixtureSimulator implements Simulator {
 	
 	@Override
 	public List<Team> simulateFixtures(List<Fixture> fixtures, int round) {
+		System.out.println("\n" + fixtures.get(0).getHomeTeam().getLeague().getDisplayName() + "\n");
 		List<Team> result = new ArrayList<>();
 		List<Fixture> thisRound = fixtures.stream().filter(f -> f.getRound() == round).collect(Collectors.toList());
 		for (Fixture fixture : thisRound) {

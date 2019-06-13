@@ -1,0 +1,14 @@
+Barrow Raiders : 45 : 40
+Batley Bulldogs : 55 : 50
+Bradford Bulls : 60 : 50
+Dewsbury Rams : 50 : 50
+Featherstone Lions : 60 : 55
+Halifax : 50 : 55
+Leigh Centurians : 65 : 55
+Rochdale Hornets : 40 : 45
+Sheffield Eagles : 55 : 55
+Swinton Lions : 45 : 45
+Toronto Wolfpack : 70 : 65
+Toulouse Olympique : 60 : 65
+Widnes Vikings : 60 : 55
+York City Knights : 55 : 55
