@@ -1,12 +1,12 @@
-Castleford Tigers : 88 : 75
-Catalan Dragons : 86 : 73
-Huddersfield Giants : 57 : 57
-Hull FC : 90 : 66
-Hull KR : 61 : 58
-Leeds Rhinos : 71 : 75
-London Broncos : 56 : 56
-Salford Red Devils : 78 : 81
-St Helens : 100 : 98
-Wakefield Wildcats : 75 : 76
-Warrington Wolves : 100 : 90
-Wigan Warriors : 67 : 75
+Castleford Tigers : 76 : 77
+Catalan Dragons : 85 : 76
+Huddersfield Giants : 55 : 55
+Hull FC : 84 : 72
+Hull KR : 55 : 55
+Leeds Rhinos : 68 : 69
+London Broncos : 57 : 57
+Salford Red Devils : 59 : 72
+St Helens : 100 : 96
+Wakefield Wildcats : 69 : 76
+Warrington Wolves : 91 : 85
+Wigan Warriors : 78 : 82

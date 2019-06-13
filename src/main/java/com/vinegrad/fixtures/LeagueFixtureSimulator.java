@@ -30,18 +30,16 @@ public class LeagueFixtureSimulator implements Simulator {
 		final Team homeTeam = fixture.getHomeTeam();
 		final Team awayTeam = fixture.getAwayTeam();
 		
-		double homeChance = ((homeTeam.getAttack() + (100 - awayTeam.getDefence())) / 2
+		double homeChance = ((homeTeam.getAttack() + (140 - awayTeam.getDefence())) / 2
 				+ 3 * homeTeam.getForm() + (30 - awayTeam.getForm())
 				+ (31 - homeTeam.getPlace()) + awayTeam.getPlace()
 				+ 100 * random()) / 2;
 				
-		double awayChance = 0.9 * ((awayTeam.getAttack() + (100 - homeTeam.getDefence())) / 2
+		double awayChance = 0.9 * ((awayTeam.getAttack() + (140 - homeTeam.getDefence())) / 2
 				+ 3 * awayTeam.getForm() + (30 - homeTeam.getForm())
 				+ (31 - awayTeam.getPlace()) + homeTeam.getPlace()
 				+ 100 * random()) / 2;
 
-		LOGGER.info("Home: " + homeChance + " Away: " + awayChance);
-		
 		int homeTries = getTries(homeChance);
 		int awayTries = getTries(awayChance);
 
@@ -50,6 +48,14 @@ public class LeagueFixtureSimulator implements Simulator {
 		
 		int homeScore = 4 * homeTries + 2 * homeGoals;
 		int awayScore = 4 * awayTries + 2 * awayGoals;
+		
+		if(homeScore + awayScore > 80) {
+			int losingScore = homeScore > awayScore ? awayScore : homeScore;
+			if(losingScore > 30) {
+				homeScore -= 20;
+				awayScore -= 20;
+			}
+		}
 		
 		if(abs(homeScore - awayScore) <= 6) {
 			double random = random();

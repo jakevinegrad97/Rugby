@@ -1,7 +1,10 @@
 package com.vinegrad.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import org.apache.log4j.Logger;
 
 public class Team {
 
@@ -10,13 +13,13 @@ public class Team {
 	private double attack, defence;
 	private League league;
 	private List<Integer> form;
+	private List<Integer> last8;
+	private boolean backOnRightTrack;
 
-	public Team(String name, double attack, double defence, League league) {
-		this.form = new ArrayList<>();
-		this.name = name;
-		this.attack = attack;
-		this.defence = defence;
-		this.league = league;
+	{
+		backOnRightTrack = true;
+		form = new ArrayList<>();
+		last8 = new ArrayList<>();
 		played = 0;
 		won = 0;
 		drawn = 0;
@@ -26,6 +29,13 @@ public class Team {
 		pointsDifference = scored = conceded;
 		points = 2 * won + drawn;
 		place = 0;
+	}
+	
+	public Team(String name, double attack, double defence, League league) {
+		this.name = name;
+		this.attack = attack;
+		this.defence = defence;
+		this.league = league;
 	}
 	
 	public int getForm() {
@@ -132,8 +142,9 @@ public class Team {
 		scored += pointsScored;
 		conceded += pointsConceded;
 		pointsDifference = pointsDifference + pointsScored - pointsConceded;
-		defence += pointsConceded <= 24 ? 3 * Math.random() * (24 - pointsConceded) / 100 : - 3 * Math.random() * (pointsConceded - 24) / 100;
-		attack += pointsScored >= 18 ? 3 * Math.random() * (pointsScored - 18) / 100 : -3 * Math.random() * (18 - pointsScored) / 100;
+		defence += pointsConceded <= 24 ? 2 * Math.random() * (24 - pointsConceded) / 100 : - 2 * Math.random() * (pointsConceded - 24) / 100;
+		attack += pointsScored >= 24 ? 2 * Math.random() * (pointsScored - 24) / 100 : -2 * Math.random() * (24 - pointsScored) / 100;
+		
 		int pointsForResult = 0;
 		if(pointsScored > pointsConceded) {
 			won++;
@@ -159,6 +170,15 @@ public class Team {
 			form.remove(0);
 			form.add(pointsForResult);
 		}
+		if(last8.size() < 8)
+			last8.add(pointsForResult);
+		else {
+			last8.remove(0);
+			last8.add(pointsForResult);
+		}
+		
+		if(played >= 8)
+			checkTerribleForm();
 		
 		if(attack > 100)
 			attack = 100;
@@ -168,6 +188,24 @@ public class Team {
 			attack = 55;
 		if(defence < 55)
 			defence = 55;
+	}
+	
+	public static final Logger LOGGER = Logger.getLogger(Team.class);
+
+	private void checkTerribleForm() {
+		if(last8.stream().mapToInt(i -> i).sum() == 0) {
+			LOGGER.info("Lost last 8: " + name);
+			backOnRightTrack = false;
+			form.add(3);
+		} 
+		if(!backOnRightTrack) {
+			if(last8.stream().mapToInt(i -> i).sum() > 0) {
+				LOGGER.info("Finally won: " + name);
+				form = new ArrayList<>();
+				form.add(3);
+				backOnRightTrack = true;
+			}
+		}
 	}
 	
 	
