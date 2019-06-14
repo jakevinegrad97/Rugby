@@ -22,12 +22,14 @@ public class EndOfSeasonImpl extends EndOfSeason {
 			.collect(Collectors.toList());
 		
 		print(league.getDisplayName() + " End of Season!");
+		if(league.equals(League.SUPER_LEAGUE)) {
 		Team bottom = teams.stream()
 				.filter(team -> team.getPlace() == teams.size())
 				.findFirst()
 				.get();
 		print(bottom.getName() + " are relegated!");
 		bottom.relegate();
+		}
 		
 		final Team first = top5.get(0);
 		final Team second = top5.get(1);

@@ -1,14 +1,14 @@
-Barrow Raiders : 45 : 40
-Batley Bulldogs : 55 : 50
-Bradford Bulls : 60 : 50
-Dewsbury Rams : 50 : 50
-Featherstone Lions : 60 : 55
-Halifax : 50 : 55
-Leigh Centurians : 65 : 55
-Rochdale Hornets : 40 : 45
-Sheffield Eagles : 55 : 55
-Swinton Lions : 45 : 45
-Toronto Wolfpack : 70 : 65
-Toulouse Olympique : 60 : 65
-Widnes Vikings : 60 : 55
-York City Knights : 55 : 55
+Barrow Raiders : 41 : 40 : CH
+Batley Bulldogs : 57 : 56 : CH
+Bradford Bulls : 52 : 41 : CH
+Dewsbury Rams : 40 : 40 : CH
+Halifax : 48 : 48 : CH
+Hull KR : 71 : 63 : SL
+Leigh Centurians : 70 : 55 : CH
+Rochdale Hornets : 41 : 40 : CH
+Salford Red Devils : 69 : 67 : CH
+Sheffield Eagles : 70 : 63 : CH
+Swinton Lions : 40 : 40 : CH
+Wakefield Wildcats : 70 : 66 : SL
+Widnes Vikings : 58 : 49 : CH
+York City Knights : 70 : 62 : CH

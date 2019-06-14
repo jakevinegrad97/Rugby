@@ -1,13 +1,13 @@
 #									    P   W   D   L   F   A   D   P
-1. St Helens                         30   23   0   7   1072   660   412   46
-2. Warrington Wolves                 30   23   0   7   1056   659   397   46
-3. Wigan Warriors                    30   20   0   10   915   522   393   40
-4. Catalan Dragons                   30   19   0   11   917   775   142   38
-5. London Broncos                    30   18   0   12   892   767   125   36
-6. Wakefield Wildcats                30   15   0   15   802   858   -56   30
-7. Castleford Tigers                 30   14   0   16   737   862   -125   28
-8. Leeds Rhinos                      30   12   0   18   726   860   -134   24
-9. Hull FC                           30   11   0   19   751   915   -164   22
-10. Hull KR                           30   11   0   19   647   884   -237   22
-11. Salford Red Devils                30   10   0   20   608   888   -280   20
-12. Huddersfield Giants               30   4   0   26   546   1019   -473   8
+1. Warrington Wolves                 30   27   0   3   1257   541   716   54
+2. St Helens                         30   26   0   4   1119   520   599   52
+3. Hull FC                           30   19   0   11   937   677   260   38
+4. Catalan Dragons                   30   17   0   13   812   650   162   34
+5. Featherstone Lions                30   15   0   15   685   683   2   30
+6. Wigan Warriors                    30   15   0   15   671   682   -11   30
+7. Castleford Tigers                 30   12   0   18   746   884   -138   24
+8. Huddersfield Giants               30   11   0   19   619   795   -176   22
+9. London Broncos                    30   11   0   19   548   938   -390   22
+10. Leeds Rhinos                      30   10   0   20   632   884   -252   20
+11. Toulouse Olympique                30   9   0   21   584   893   -309   18
+12. Batley Bulldogs                   30   8   0   22   555   1018   -463   16

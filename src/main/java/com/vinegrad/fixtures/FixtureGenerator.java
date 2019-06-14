@@ -32,9 +32,11 @@ public class FixtureGenerator implements Generator {
 			while(thisRound.size() < teams.size() / 2) {
 				Fixture fixture = possibleFixtures.get((int) floor(possibleFixtures.size() * random()));
 				if(isValidFixture(fixture, thisRound)) {
+					if(result.stream().filter(f -> f.getHomeTeam().equals(fixture.getHomeTeam()) && f.getAwayTeam().equals(fixture.getAwayTeam())).count() < 2) {
 					possibleFixtures.remove(fixture);
 					fixture.setRound(round);
 					thisRound.add(fixture);
+					}
 				} else {
 					possibleFixtures.remove(fixture);
 				}

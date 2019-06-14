@@ -14,6 +14,7 @@ public class Team {
 	private List<Integer> form;
 	private List<Integer> last8;
 	private boolean backOnRightTrack;
+	private League initialLeague;
 
 	{
 		backOnRightTrack = true;
@@ -30,11 +31,16 @@ public class Team {
 		place = 0;
 	}
 	
-	public Team(String name, double attack, double defence, League league) {
+	public Team(String name, double attack, double defence, League league, League initialLeague) {
 		this.name = name;
 		this.attack = attack;
 		this.defence = defence;
 		this.league = league;
+		this.initialLeague = initialLeague;
+	}
+	
+	public League getInitialLeague() {
+		return initialLeague;
 	}
 	
 	public int getForm() {
@@ -98,7 +104,7 @@ public class Team {
 	}
 
 	public String toString() {
-		return name + " : " + (int) Math.round(attack) + " : " + (int) Math.round(defence);
+		return name + " : " + (int) Math.round(attack) + " : " + (int) Math.round(defence) + " : " + initialLeague.getInitials();
 	}
 
 	public String tableFormat() {
@@ -205,18 +211,20 @@ public class Team {
 	}
 	
 	private double check(double input) {
+		double leagueWeightHigh = 10 * (2 - initialLeague.getTier());
+		double leagueWeightLow = 10 * (initialLeague.getTier() - 1);
 		switch(league) {
 		case SUPER_LEAGUE :
-			if(input > 100)
-				input = 100;
-			if(input < 60)
-				input = 60;
+			if(input > 100 - leagueWeightLow)
+				input = 100 - leagueWeightLow;
+			if(input < 60 - leagueWeightLow)
+				input = 60 - leagueWeightLow;
 			break;
 		case CHAMPIONSHIP :
-			if(input > 70)
-				input = 70;
-			if(input < 40)
-				input = 40;
+			if(input > 70 + leagueWeightHigh)
+				input = 70 + leagueWeightHigh;
+			if(input < 40 + leagueWeightHigh)
+				input = 40 + leagueWeightHigh;
 			break;
 		}
 		return input;

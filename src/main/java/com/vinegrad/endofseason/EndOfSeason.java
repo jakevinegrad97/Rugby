@@ -89,9 +89,13 @@ public abstract class EndOfSeason {
 		final Team homeTeam = fixture.getHomeTeam();
 		final Team awayTeam = fixture.getAwayTeam();
 		
+		final double homeLeagueWeight = 10 * (homeTeam.getLeague().getTier() - homeTeam.getInitialLeague().getTier());
+		final double awayLeagueWeight = 10 * (awayTeam.getLeague().getTier() - awayTeam.getInitialLeague().getTier());
+		
 		double homeChance = ((homeTeam.getAttack() + (100 - awayTeam.getDefence())) / 2
 				+ 2 * homeTeam.getForm() + (20 - awayTeam.getForm())
 				+ 2 * ((31 - homeTeam.getPlace()) + awayTeam.getPlace())
+				+ homeLeagueWeight
 				+ 100 * random()) / 2;
 				
 		double awayHit = fixture.getRound() == 4 ? 1 : 0.9;
@@ -99,6 +103,7 @@ public abstract class EndOfSeason {
 		double awayChance = awayHit * ((awayTeam.getAttack() + (100 - homeTeam.getDefence())) / 2
 				+ 2 * awayTeam.getForm() + (20 - homeTeam.getForm())
 				+ 2 * ((31 - awayTeam.getPlace()) + homeTeam.getPlace())
+				+ awayLeagueWeight
 				+ 100 * random()) / 2;
 
 		int homeTries = getTries(homeChance);
@@ -185,4 +190,5 @@ public abstract class EndOfSeason {
 			e.printStackTrace();
 		}
 	}
+	
 }

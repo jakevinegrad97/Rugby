@@ -13,6 +13,17 @@ public enum League {
 		this.tier = tier;
 	}
 	
+	public static League of(String initials) {
+		switch(initials) {
+		case "SL" :
+			return SUPER_LEAGUE;
+		case "CH" :
+			return CHAMPIONSHIP;
+		default :
+			return CHAMPIONSHIP;
+		}
+	}
+	
 	public String getDisplayName() {
 		return displayName;
 	}

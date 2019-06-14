@@ -1,15 +1,15 @@
 #									    P   W   D   L   F   A   D   P
-1. Halifax                           30   24   0   6   1012   534   478   48
-2. Toronto Wolfpack                  30   24   0   6   1053   588   465   48
-3. Featherstone Lions                30   18   0   12   927   710   217   36
-4. Sheffield Eagles                  30   18   0   12   863   729   134   36
-5. Widnes Vikings                    30   17   1   12   790   715   75   35
-6. York City Knights                 30   16   1   13   798   689   109   33
-7. Leigh Centurians                  30   16   0   14   685   716   -31   32
-8. Toulouse Olympique                30   15   0   15   778   624   154   30
-9. Bradford Bulls                    30   13   0   17   757   918   -161   26
-10. Batley Bulldogs                   30   12   0   18   735   862   -127   24
-11. Dewsbury Rams                     30   11   0   19   722   925   -203   22
-12. Rochdale Hornets                  30   10   0   20   582   983   -401   20
-13. Barrow Raiders                    30   8   0   22   642   891   -249   16
-14. Swinton Lions                     30   7   0   23   559   1019   -460   14
+1. Hull KR                           22   17   0   5   827   432   395   34
+2. Toronto Wolfpack                  22   16   0   6   728   380   348   32
+3. Sheffield Eagles                  22   16   0   6   647   469   178   32
+4. York City Knights                 22   15   0   7   764   494   270   30
+5. Leigh Centurians                  22   13   0   9   648   526   122   26
+6. Widnes Vikings                    22   11   0   11   626   610   16   22
+7. Wakefield Wildcats                22   11   0   11   616   609   7   22
+8. Swinton Lions                     22   10   0   12   530   597   -67   20
+9. Bradford Bulls                    22   10   0   12   556   664   -108   20
+10. Salford Red Devils                22   10   0   12   504   624   -120   20
+11. Barrow Raiders                    22   8   0   14   466   589   -123   16
+12. Halifax                           22   6   0   16   437   655   -218   12
+13. Dewsbury Rams                     22   6   0   16   407   772   -365   12
+14. Rochdale Hornets                  22   5   0   17   371   706   -335   10

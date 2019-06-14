@@ -31,14 +31,19 @@ public class LeagueFixtureSimulator implements Simulator {
 		final Team homeTeam = fixture.getHomeTeam();
 		final Team awayTeam = fixture.getAwayTeam();
 		
+		final double homeLeagueWeight = 10 * (homeTeam.getLeague().getTier() - homeTeam.getInitialLeague().getTier());
+		final double awayLeagueWeight = 10 * (awayTeam.getLeague().getTier() - awayTeam.getInitialLeague().getTier());
+		
 		double homeChance = ((homeTeam.getAttack() + (140 - awayTeam.getDefence())) / 2
 				+ 3 * homeTeam.getForm() + (30 - awayTeam.getForm())
 				+ (31 - homeTeam.getPlace()) + awayTeam.getPlace()
+				+ homeLeagueWeight
 				+ 100 * random()) / 2;
 				
 		double awayChance = 0.9 * ((awayTeam.getAttack() + (140 - homeTeam.getDefence())) / 2
 				+ 3 * awayTeam.getForm() + (30 - homeTeam.getForm())
 				+ (31 - awayTeam.getPlace()) + homeTeam.getPlace()
+				+ awayLeagueWeight
 				+ 100 * random()) / 2;
 
 		int homeTries = getTries(homeChance);

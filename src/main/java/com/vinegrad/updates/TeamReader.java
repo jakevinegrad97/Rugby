@@ -23,7 +23,8 @@ public class TeamReader implements Reader {
 					String name = components[0].trim();
 					double attack = Double.valueOf(components[1].trim());
 					double defence = Double.valueOf(components[2].trim());
-					return new Team(name, attack, defence, league);
+					League initialLeague = League.of(components[3].trim());
+					return new Team(name, attack, defence, league, initialLeague);
 				})
 				.collect(Collectors.toList());
 		} catch (IOException e) {
