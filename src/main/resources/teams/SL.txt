@@ -1,12 +1,12 @@
-Castleford Tigers : 80 : 65 : SL
-Catalan Dragons : 92 : 68 : SL
-Featherstone Lions : 60 : 60 : CH
-Huddersfield Giants : 64 : 62 : SL
-Hull FC : 93 : 70 : SL
-Leeds Rhinos : 74 : 68 : SL
-London Broncos : 60 : 60 : SL
+Castleford Tigers : 80 : 63 : SL
+Catalan Dragons : 95 : 65 : SL
+Featherstone Lions : 56 : 58 : CH
+Huddersfield Giants : 64 : 61 : SL
+Hull FC : 96 : 72 : SL
+Leeds Rhinos : 74 : 69 : SL
+Salford Red Devils : 70 : 70 : CH
 St Helens : 100 : 100 : SL
-Toronto Wolfpack : 70 : 70 : CH
-Toulouse Olympique : 67 : 66 : CH
-Warrington Wolves : 100 : 98 : SL
-Wigan Warriors : 68 : 69 : SL
+Toronto Wolfpack : 68 : 66 : CH
+Toulouse Olympique : 65 : 64 : CH
+Warrington Wolves : 100 : 100 : SL
+Wigan Warriors : 70 : 68 : SL

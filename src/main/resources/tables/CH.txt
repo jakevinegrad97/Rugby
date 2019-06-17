@@ -1,15 +1,15 @@
 #									    P   W   D   L   F   A   D   P
-1. Hull KR                           30   23   0   7   1105   615   490   46
-2. Toronto Wolfpack                  30   22   0   8   994   551   443   44
-3. York City Knights                 30   21   0   9   1050   672   378   42
-4. Sheffield Eagles                  30   21   0   9   918   695   223   42
-5. Wakefield Wildcats                30   19   0   11   948   755   193   38
-6. Leigh Centurians                  30   17   0   13   860   763   97   34
-7. Bradford Bulls                    30   16   0   14   785   820   -35   32
-8. Widnes Vikings                    30   14   0   16   797   859   -62   28
-9. Swinton Lions                     30   13   0   17   706   821   -115   26
-10. Salford Red Devils                30   12   0   18   717   865   -148   24
-11. Barrow Raiders                    30   10   0   20   637   896   -259   20
-12. Rochdale Hornets                  30   8   0   22   513   908   -395   16
-13. Dewsbury Rams                     30   8   0   22   557   1017   -460   16
-14. Halifax                           30   6   0   24   563   913   -350   12
+1. Hull KR                           30   26   0   4   1198   570   628   52
+2. Wakefield Wildcats                30   25   0   5   1027   555   472   50
+3. Salford Red Devils                30   21   0   9   850   677   173   42
+4. Leigh Centurians                  30   19   0   11   903   680   223   38
+5. Dewsbury Rams                     30   17   0   13   782   651   131   34
+6. Batley Bulldogs                   30   16   0   14   778   752   26   32
+7. Halifax                           30   15   0   15   640   778   -138   30
+8. Rochdale Hornets                  30   14   0   16   709   770   -61   28
+9. Sheffield Eagles                  30   12   0   18   674   772   -98   24
+10. Bradford Bulls                    30   12   0   18   710   867   -157   24
+11. York City Knights                 30   11   0   19   727   986   -259   22
+12. Widnes Vikings                    30   9   0   21   697   885   -188   18
+13. Barrow Raiders                    30   7   0   23   522   920   -398   14
+14. Swinton Lions                     30   6   0   24   555   909   -354   12
